@@ -2,7 +2,7 @@
 
 This is a NodeJS project with ExpressJS in TypeScript and developed by TDD.
 
-## Setup
+## Setup Express, TypeScript, Formatting and Testing
 
 1. Create folder
 2. Setup npm: `npm init -y`
@@ -24,3 +24,8 @@ This is a NodeJS project with ExpressJS in TypeScript and developed by TDD.
 11. Combine Prettier and ESLint to turn off conflicts, and personally erroring unused imports: `npm i -D eslint-config-prettier eslint-plugin-unused-imports`
 12. Install Jest via [ts-jest](https://jestjs.io/docs/getting-started#via-ts-jest): `npm i -D jest ts-jest @types/jest`
 13. Config Jest: `npx ts-jest config:init`
+
+## Setup Sequelize (ORM)
+
+1. Install dependencies: `npm i sequelize sqlite3`
+2. Add [config](./src/config/db.ts) and [connection](./src/config/sequelize.ts) files

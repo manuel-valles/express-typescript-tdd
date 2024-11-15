@@ -4,10 +4,11 @@
   "description": "This is a NodeJS project with ExpressJS in TypeScript and developed by TDD.",
   "main": "index.js",
   "scripts": {
+    "seed": "ts-node ./src/scripts/seed.ts",
     "build": "tsc",
     "dev": "nodemon ./src/index.ts",
     "start": "node ./dist/index.js",
-    "test": "jest --watchAll",
+    "test": "cross-env NODE_ENV=test jest --watchAll",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
     "lint": "eslint",
@@ -21,6 +22,7 @@
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
     "@types/supertest": "^6.0.2",
+    "cross-env": "^7.0.3",
     "eslint": "^9.14.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-unused-imports": "^4.1.4",
@@ -35,6 +37,8 @@
     "typescript-eslint": "^8.14.0"
   },
   "dependencies": {
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "sequelize": "^6.37.5",
+    "sqlite3": "^5.1.7"
   }
 }

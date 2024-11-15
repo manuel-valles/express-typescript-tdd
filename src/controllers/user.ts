@@ -1,22 +1,30 @@
 import { Request, Response } from 'express';
+import UserInstance from '../models/user';
 
 class UserController {
-  getAll = (_: Request, res: Response) => {
+  getAll = async (_: Request, res: Response) => {
     try {
-      res.json([{}]);
+      const users = await UserInstance.findAll();
+      res.json(users);
     } catch (error) {
       console.error(error);
       res.status(500).json({ msg: 'Failed to read records' });
     }
   };
 
-  getById = (req: Request, res: Response) => {
+  getById = async (req: Request, res: Response) => {
     const { id } = req.params;
     try {
-      res.json({});
+      const foundUser = await UserInstance.findByPk(id);
+
+      if (foundUser) {
+        res.json(foundUser);
+      } else {
+        res.status(404).json({ msg: `User with ID '${id}' not found` });
+      }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ msg: `Failed to read the user with ID: ${id}` });
+      res.status(500).json({ msg: 'Failed to read the user' });
     }
   };
 }

@@ -1,5 +1,6 @@
 import request from 'supertest';
 import app from '../src/app';
+import { UserAttributes } from '../src/models/user';
 
 describe('UserController', () => {
   describe('GET /users', () => {
@@ -9,6 +10,16 @@ describe('UserController', () => {
       expect(headers['content-type']).toMatch(/application\/json/);
       expect(body).toBeInstanceOf(Array);
       expect(body.length).toBeGreaterThan(0);
+
+      // Validate the properties of the first user object
+      body.forEach((user: UserAttributes) => {
+        expect(user).toMatchObject({
+          id: expect.any(Number),
+          firstName: expect.any(String),
+          lastName: expect.any(String),
+          admin: expect.any(Boolean),
+        });
+      });
     });
   });
 
@@ -20,7 +31,12 @@ describe('UserController', () => {
       );
       expect(status).toBe(200);
       expect(headers['content-type']).toMatch(/application\/json/);
-      expect(body).toEqual({});
+      expect(body).toMatchObject({
+        id: expect.any(Number),
+        firstName: expect.any(String),
+        lastName: expect.any(String),
+        admin: expect.any(Boolean),
+      });
     });
     it('should return 404 when user not found', async () => {
       const userId = 999;
