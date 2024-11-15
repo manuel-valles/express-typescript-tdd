@@ -22,3 +22,5 @@ This is a NodeJS project with ExpressJS in TypeScript and developed by TDD.
 9. Configure ESLint: `npm init @eslint/config@latest`
 10. Configure Prettier: `npm install --save-dev --save-exact prettier`
 11. Combine Prettier and ESLint to turn off conflicts, and personally erroring unused imports: `npm i -D eslint-config-prettier eslint-plugin-unused-imports`
+12. Install Jest via [ts-jest](https://jestjs.io/docs/getting-started#via-ts-jest): `npm i -D jest ts-jest @types/jest`
+13. Config Jest: `npx ts-jest config:init`
